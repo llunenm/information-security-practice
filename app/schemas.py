@@ -76,3 +76,29 @@ class LoginResponse(BaseModel):
     user_id: int
     username: str
     roles: list[str] = []
+
+# ══════════════════════════════════════════
+# СХЕМИ ДЛЯ JWT (нові — практична №5)
+# ══════════════════════════════════════════
+
+class TokenResponse(BaseModel):
+    """Відповідь при успішному вході — містить обидва токени."""
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"
+
+
+class TokenRefreshRequest(BaseModel):
+    """Запит на оновлення токена."""
+    refresh_token: str
+
+
+class UserInfo(BaseModel):
+    """Інформація про поточного користувача."""
+    id: int
+    username: str
+    email: str
+    full_name: str
+    role: str
+
+    model_config = {"from_attributes": True}
