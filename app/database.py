@@ -16,3 +16,16 @@ SessionLocal = sessionmaker(
 
 class Base(DeclarativeBase):
     pass
+
+
+def get_db():
+    """
+    Генератор сесій бази даних.
+    FastAPI автоматично викликає цю функцію для кожного запиту
+    і закриває сесію після завершення запиту.
+    """
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

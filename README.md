@@ -1,4 +1,3 @@
-# information-security-practice
 # Electronic Dean's Office
 
 ## Опис
